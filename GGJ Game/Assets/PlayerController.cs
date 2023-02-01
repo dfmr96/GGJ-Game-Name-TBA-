@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -34,12 +35,23 @@ public class PlayerController : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
+        facingDirection = transform.right;
     }
     private void Update()
     {
         moveX = Input.GetAxis("Horizontal");
         moveY = Input.GetAxis("Vertical");
         velocity = rb.velocity;
+
+        if (moveX > 0)
+        {
+            facingDirection = transform.right;
+        }
+        else if (moveX < 0)
+        {
+            facingDirection = -transform.right;
+        }
+        
         Jump(GroundCheck());
     }
 
@@ -50,13 +62,7 @@ public class PlayerController : MonoBehaviour
     }
     void HorizontalMovement()
     {
-        if (moveX > 0)
-        {
-            facingDirection = transform.right;
-        } else if (moveX < 0)
-        {
-            facingDirection = -transform.right;
-        }
+        
         rb.velocity = new Vector2(moveX * speed * Time.fixedDeltaTime, rb.velocity.y);
     }
 
