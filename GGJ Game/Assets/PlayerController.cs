@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     {
         moveX = Input.GetAxis("Horizontal");
         velocity = rb.velocity;
+
+        Jump();
     }
 
     private void FixedUpdate()
