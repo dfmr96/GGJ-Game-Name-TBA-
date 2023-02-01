@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Wall Checker")]
 
+    [SerializeField] bool isFacingRight;
+    [SerializeField] Vector2 facingDirection;
     [SerializeField] Vector3 wallBoxSize;
     [SerializeField] float wallMaxDistance;
     [SerializeField] LayerMask wallLayerMask;
@@ -48,20 +50,27 @@ public class PlayerController : MonoBehaviour
     }
     void HorizontalMovement()
     {
+        if (moveX > 0)
+        {
+            facingDirection = transform.right;
+        } else if (moveX < 0)
+        {
+            facingDirection = -transform.right;
+        }
         rb.velocity = new Vector2(moveX * speed * Time.fixedDeltaTime, rb.velocity.y);
     }
 
 
     void VerticalMovement()
     {
-        if (RightSideWallCheck() == true || LeftSideWallCheck() == true)
+        if (WallCheck())
         {
         Debug.Log("Pegado de la pared");
         rb.velocity = new Vector2(rb.velocity.x, moveY * slidingSpeed * Time.fixedDeltaTime);
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                rb.velocity = new Vector2(jumpForceX, jumpForceY);
+                rb.velocity = new Vector2(jumpForceX * -facingDirection.x, jumpForceY);
             }
         }
     }
@@ -77,8 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(transform.position - transform.up * groundMaxDistance, groundBoxSize);
-        Gizmos.DrawCube(transform.position - transform.right * wallMaxDistance, wallBoxSize);
-        Gizmos.DrawCube(transform.position + transform.right * wallMaxDistance, wallBoxSize);
+        Gizmos.DrawCube(transform.position + (Vector3)facingDirection * wallMaxDistance, wallBoxSize);
 
     }
     bool GroundCheck()
@@ -93,16 +101,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool LeftSideWallCheck()
+    bool WallCheck()
     {
-        return BoxChecker(transform.position, wallBoxSize, 0, -transform.right, wallMaxDistance, wallLayerMask);
+        return BoxChecker(transform.position, wallBoxSize, 0, (Vector3)facingDirection, wallMaxDistance, wallLayerMask);
     }
 
-    bool RightSideWallCheck()
-    {
-        return BoxChecker(transform.position, wallBoxSize, 0, transform.right, wallMaxDistance, wallLayerMask);
-
-    }
 
     bool BoxChecker(Vector2 position, Vector2 size, float angle, Vector2 direction, float distance, int layermask)
     {
