@@ -33,4 +33,9 @@ public class PlayerStats : MonoBehaviour
             sap--;
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 }

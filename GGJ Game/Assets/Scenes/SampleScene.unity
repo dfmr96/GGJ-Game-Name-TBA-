@@ -5723,6 +5723,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3152257054722300389, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152257054991659792, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3152257055883644040, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5826,6 +5834,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9208298620006940782, guid: 43f0d36a7ab46834c8c1ca43abd99c9d, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208298620006940782, guid: 43f0d36a7ab46834c8c1ca43abd99c9d, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9208298621033528318, guid: 43f0d36a7ab46834c8c1ca43abd99c9d, type: 3}

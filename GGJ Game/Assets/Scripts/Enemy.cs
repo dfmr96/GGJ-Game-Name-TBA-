@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    [SerializeField] int health;
+    public int health;
     [SerializeField] float speed;
     [SerializeField] BoxCollider2D movementArea;
     [SerializeField] BoxCollider2D enemyCollider;
@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
         changeDirectionTimer += Time.deltaTime;
         HorizontalMovement();
         ChangeDirection();
+
+        if (health <= 0) Destroy(gameObject);
     }
 
     void HorizontalMovement()
@@ -30,5 +32,10 @@ public class EnemyController : MonoBehaviour
             changeDirectionTimer = 0;
             speed = -speed;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }
