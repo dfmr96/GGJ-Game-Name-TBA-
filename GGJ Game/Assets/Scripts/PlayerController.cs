@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Components or Game Objects")]
+    [SerializeField] GameObject bulletSpawnPoint;
+    [SerializeField] GameObject bulletPrefab;
+
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] PlayerStats stats;
+
     [Header("Movement Stats")]
     [SerializeField] float speed = 5;
     [SerializeField] float slidingSpeed = 5;
@@ -30,13 +37,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float wallMaxDistance;
     [SerializeField] LayerMask wallLayerMask;
 
-    [SerializeField] Rigidbody2D rb;
 
-    [SerializeField] GameObject bulletSpawnPoint;
-    [SerializeField] GameObject bulletPrefab;
+
+
     private void Start()
     {
         Application.targetFrameRate = 60;
+        stats = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody2D>();
         isFacingRight = true;
         facingDirection = transform.right;
@@ -135,8 +142,9 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && stats.health > 0)
         {
+            stats.ReduceSap();
             Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, transform.rotation);
         }
     }
