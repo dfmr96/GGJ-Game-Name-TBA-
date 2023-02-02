@@ -31,11 +31,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask wallLayerMask;
 
     [SerializeField] Rigidbody2D rb;
+
+    [SerializeField] GameObject bulletSpawnPoint;
+    [SerializeField] GameObject bulletPrefab;
     private void Start()
     {
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
+        isFacingRight = true;
         facingDirection = transform.right;
+
     }
     private void Update()
     {
@@ -43,15 +48,15 @@ public class PlayerController : MonoBehaviour
         moveY = Input.GetAxis("Vertical");
         velocity = rb.velocity;
 
-        if (moveX > 0)
+        if (moveX > 0 && !isFacingRight)
         {
-            facingDirection = transform.right;
+            Flip();
         }
-        else if (moveX < 0)
+        else if (moveX < 0 && isFacingRight)
         {
-            facingDirection = -transform.right;
+            Flip();
         }
-        
+        Shoot();
         Jump(GroundCheck());
     }
 
@@ -82,6 +87,7 @@ public class PlayerController : MonoBehaviour
     }
     void Jump(bool canJump)
     {
+        if (canJump) Debug.Log("Puede saltar");
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForceY);
@@ -97,19 +103,21 @@ public class PlayerController : MonoBehaviour
     }
     bool GroundCheck()
     {
+        return BoxChecker(transform.position, groundBoxSize, 0, -transform.up, groundMaxDistance, groundLayerMask);
+
+/*
         if (Physics2D.BoxCast(transform.position, groundBoxSize,0, -transform.up, groundMaxDistance, groundLayerMask))
         {
-            Debug.Log("Pegando del piso");
             return true;
         } else
         {
             return false;
-        }
+        }*/
     }
 
     bool WallCheck()
     {
-        return BoxChecker(transform.position, wallBoxSize, 0, (Vector3)facingDirection, wallMaxDistance, wallLayerMask);
+        return BoxChecker(transform.position, wallBoxSize, 0, facingDirection, wallMaxDistance, wallLayerMask);
     }
 
 
@@ -123,5 +131,20 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, transform.rotation);
+        }
+    }
+
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        facingDirection = -facingDirection;
+        transform.Rotate(0, 180f, 0);
     }
 }
