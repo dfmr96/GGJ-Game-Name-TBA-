@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 9208298620006940780}
   - component: {fileID: 9208298620006940781}
   - component: {fileID: 9208298620006940783}
+  - component: {fileID: 3717635160224219292}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -99,6 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72d1ca79007b2c4aaf0e1705061a3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpawnPoint: {fileID: 1401393071}
+  bulletPrefab: {fileID: 3831301047811052083, guid: b7a4db56794b12b42b6ac3439d5ff83f, type: 3}
+  rb: {fileID: 0}
+  stats: {fileID: 0}
   speed: 500
   slidingSpeed: 1000
   jumpForceX: 30
@@ -118,9 +123,24 @@ MonoBehaviour:
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  rb: {fileID: 0}
-  bulletSpawnPoint: {fileID: 1401393071}
-  bulletPrefab: {fileID: 3831301047811052083, guid: b7a4db56794b12b42b6ac3439d5ff83f, type: 3}
+--- !u!114 &3717635160224219292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9208298620006940782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da0aff95fa51c14e8f6172893cbf393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  minHealth: 0
+  _health: 10
+  maxSap: 5
+  minSap: 0
+  _sap: 5
 --- !u!1 &9208298621033528289
 GameObject:
   m_ObjectHideFlags: 0
