@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Instantiate(bulletPrefab, bulletSpawnPoint.transform);
+            Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, transform.rotation);
         }
     }
 

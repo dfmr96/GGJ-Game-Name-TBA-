@@ -114,7 +114,7 @@ MonoBehaviour:
   isFacingRight: 0
   facingDirection: {x: 0, y: 0}
   wallBoxSize: {x: 0.22, y: 1.6, z: 1}
-  wallMaxDistance: 1
+  wallMaxDistance: 0.5
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
