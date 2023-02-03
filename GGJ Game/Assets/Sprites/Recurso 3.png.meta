@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b2673a2475ac964ba35857c374ea901
+guid: 317ff05c20ab4a14889dca7a4f736b1d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,43 +117,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Health Bar_0
+      name: Recurso 3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 105
-        height: 349
+        height: 323
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 5, y: 30, z: 6, w: 30}
+      border: {x: 4, y: 0, z: 3, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 599b5e8494d16ec41835dedc237a3af0
-      internalID: 1483843351
+      spriteID: cbc4dac2f5817cc4a95d7256a766b563
+      internalID: -1130065613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Health Bar_1
+      name: Recurso 3_1
       rect:
         serializedVersion: 2
         x: 180
-        y: 14
+        y: 4
         width: 58
-        height: 222
-      alignment: 9
-      pivot: {x: 0.54445356, y: 0.49999997}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 8, z: 0, w: 30}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09b876a7f89a1424db0b4ba570c85fb1
-      internalID: 430740113
+      spriteID: 6dae1979a02f9ff469307db3fb747a20
+      internalID: -541658987
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Health Bar_1: 430740113
-      Health Bar_0: 1483843351
+      Recurso 3_0: -1130065613
+      Recurso 3_1: -541658987
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
