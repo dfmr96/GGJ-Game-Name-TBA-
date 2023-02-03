@@ -37,9 +37,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float wallMaxDistance;
     [SerializeField] LayerMask wallLayerMask;
 
-
-
-
     private void Start()
     {
         Application.targetFrameRate = 60;
