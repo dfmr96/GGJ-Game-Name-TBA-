@@ -37,5 +37,20 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if(health <=0)
+        {
+            GameManager.sharedInstance.RespawnPlayer(this.gameObject);
+        }
+    }
+
+    public void RestoreHealthPoints(int point)
+    {
+        health += point;
+    }
+
+    public void FullHealthRestore()
+    {
+        health = maxHealth;
     }
 }
