@@ -4,18 +4,21 @@ using System.Security.Cryptography;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class SpiderController : MonoBehaviour
+public class Spider : MonoBehaviour
 {
+    [SerializeField] int health;
     [SerializeField] GameObject[] dropPositions;
     [SerializeField] Vector3 randomPosition;
     [SerializeField] Transform bodyTransform;
     [SerializeField] bool canDrop;
+    [SerializeField] bool canBeDamaged;
     [SerializeField] float speed;
     [SerializeField] float currentSpeed;
     [SerializeField] float timeToGoUp;
     [SerializeField] float timeToGoDown;
     [SerializeField] float stunTime;
     [SerializeField] Collider2D stopZone;
+    [SerializeField] int damage;
 
     private void Start()
     {
@@ -52,6 +55,7 @@ public class SpiderController : MonoBehaviour
         {
             StartCoroutine(ChangeSpeed(stunTime, -speed));
             canDrop = false;
+            canBeDamaged = true;
         }
 
         if (collision == stopZone)
@@ -62,6 +66,7 @@ public class SpiderController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.gameObject.GetComponentInParent<PlayerStats>().TakeDamage(damage);
             StartCoroutine(ChangeSpeed(timeToGoUp, -speed));
             canDrop = false;
         }
@@ -71,7 +76,13 @@ public class SpiderController : MonoBehaviour
     {
         currentSpeed = 0;
         yield return new WaitForSeconds(timeToMove);
+        canBeDamaged = false;
         if (canDrop) MoveSpiderToRandomPosition();
         currentSpeed = speed;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (canBeDamaged) health -= damage;
     }
 }

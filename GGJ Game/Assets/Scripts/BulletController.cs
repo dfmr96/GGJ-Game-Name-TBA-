@@ -35,5 +35,11 @@ public class BulletController : MonoBehaviour
             Debug.Log(target.tag);
             target.GetComponent<Enemy>().TakeDamage(damage);
         }
+
+        if (target.CompareTag("Spider"))
+        {
+            Debug.Log(target.tag);
+            target.GetComponent<Spider>().TakeDamage(damage);
+        }
     }
 }
