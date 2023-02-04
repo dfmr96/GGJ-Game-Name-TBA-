@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float wallMaxDistance;
     [SerializeField] LayerMask wallLayerMask;
 
+    [Header("Abilities")]
+
+    [SerializeField] bool canShoot;
+    [SerializeField] bool canClimb;
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -44,6 +48,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isFacingRight = true;
         facingDirection = transform.right;
+        canShoot = false;
+        canClimb = false;
 
     }
     private void Update()
@@ -78,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     void VerticalMovement()
     {
-        if (WallCheck())
+        if (WallCheck() && canClimb)
         {
         Debug.Log("Pegado de la pared");
         rb.velocity = new Vector2(rb.velocity.x, moveY * slidingSpeed * Time.fixedDeltaTime);
@@ -139,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.F) && stats.health > 0)
+        if (Input.GetKeyDown(KeyCode.F) && stats.health > 0 && canShoot)
         {
             stats.ReduceSap();
             Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, transform.rotation);
@@ -151,5 +157,15 @@ public class PlayerController : MonoBehaviour
         isFacingRight = !isFacingRight;
         facingDirection = -facingDirection;
         transform.Rotate(0, 180f, 0);
+    }
+
+    public void AllowShoot()
+    {
+        canShoot = true;
+    }
+
+    public void AllowClimb()
+    {
+        canClimb = true;
     }
 }

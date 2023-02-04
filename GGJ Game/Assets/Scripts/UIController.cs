@@ -13,13 +13,9 @@ public class UIController : MonoBehaviour
     {
         healthBar.maxValue = playerStats.maxHealth;
         healthBar.minValue = playerStats.minHealth;
-
-        sapBar.maxValue = playerStats.maxSap;
-        sapBar.minValue = playerStats.minSap;
     }
     private void Update()
     {
         healthBar.value = playerStats.health;
-        sapBar.value = playerStats.sap;
     }
 }

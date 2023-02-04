@@ -13,25 +13,9 @@ public class PlayerStats : MonoBehaviour
         private set { _health = value;} 
     }
 
-    public int maxSap;
-    public int minSap;
-    [SerializeField] int _sap;
-    public int sap 
-    {
-        get { return _sap; }
-        private set { _sap = value;}
-    }
-
     public void ReduceSap()
     {
-        if (sap <= 0)
-        {
-            health--;
-        }
-        else
-        {
-            sap--;
-        }
+        health--;
     }
 
     public void TakeDamage(int damage)
