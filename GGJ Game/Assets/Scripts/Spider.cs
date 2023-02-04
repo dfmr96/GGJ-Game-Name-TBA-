@@ -4,34 +4,49 @@ using System.Security.Cryptography;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class SpiderController : MonoBehaviour
+public class Spider : MonoBehaviour
 {
+    [SerializeField] int health;
     [SerializeField] GameObject[] dropPositions;
+    [SerializeField] GameObject alert;
+    [SerializeField] bool activeAlert;
     [SerializeField] Vector3 randomPosition;
     [SerializeField] Transform bodyTransform;
     [SerializeField] bool canDrop;
+    [SerializeField] bool canBeDamaged;
     [SerializeField] float speed;
     [SerializeField] float currentSpeed;
     [SerializeField] float timeToGoUp;
     [SerializeField] float timeToGoDown;
     [SerializeField] float stunTime;
     [SerializeField] Collider2D stopZone;
+    [SerializeField] int damage;
 
     private void Start()
     {
         canDrop = false;
-        currentSpeed = speed;
+        currentSpeed = 0;
+        MoveSpiderToRandomPosition();
     }
 
     private void Update()
     {
         VerticalMovement();
+
+        if (health <= 0)
+        {
+            ///
+        }
     }
     void GetRandomPosition()
     {
         int randomNumber = Random.Range(0, dropPositions.Length);
 
         randomPosition = dropPositions[randomNumber].transform.position;
+
+        alert.transform.position = new Vector3(randomPosition.x, alert.transform.position.y, alert.transform.position.z);
+        activeAlert = true;
+        alert.SetActive(true);
     }
     [ContextMenu("MoveSpider")]
     void MoveSpiderToRandomPosition()
@@ -43,7 +58,6 @@ public class SpiderController : MonoBehaviour
     void VerticalMovement()
     {
         bodyTransform.Translate(-transform.up * currentSpeed * Time.deltaTime);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,6 +66,7 @@ public class SpiderController : MonoBehaviour
         {
             StartCoroutine(ChangeSpeed(stunTime, -speed));
             canDrop = false;
+            canBeDamaged = true;
         }
 
         if (collision == stopZone)
@@ -62,6 +77,7 @@ public class SpiderController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.gameObject.GetComponentInParent<PlayerStats>().TakeDamage(damage);
             StartCoroutine(ChangeSpeed(timeToGoUp, -speed));
             canDrop = false;
         }
@@ -71,7 +87,20 @@ public class SpiderController : MonoBehaviour
     {
         currentSpeed = 0;
         yield return new WaitForSeconds(timeToMove);
+        if (activeAlert) alert.SetActive(false);
+        activeAlert = false;
+        canBeDamaged = false;
         if (canDrop) MoveSpiderToRandomPosition();
         currentSpeed = speed;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (canBeDamaged) health -= damage;
+    }
+
+    void DestroyBoss()
+    {
+        Destroy(gameObject);
     }
 }
