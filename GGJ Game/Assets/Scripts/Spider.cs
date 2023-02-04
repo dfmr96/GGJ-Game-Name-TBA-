@@ -8,6 +8,8 @@ public class Spider : MonoBehaviour
 {
     [SerializeField] int health;
     [SerializeField] GameObject[] dropPositions;
+    [SerializeField] GameObject alert;
+    [SerializeField] bool activeAlert;
     [SerializeField] Vector3 randomPosition;
     [SerializeField] Transform bodyTransform;
     [SerializeField] bool canDrop;
@@ -23,18 +25,28 @@ public class Spider : MonoBehaviour
     private void Start()
     {
         canDrop = false;
-        currentSpeed = speed;
+        currentSpeed = 0;
+        MoveSpiderToRandomPosition();
     }
 
     private void Update()
     {
         VerticalMovement();
+
+        if (health <= 0)
+        {
+            ///
+        }
     }
     void GetRandomPosition()
     {
         int randomNumber = Random.Range(0, dropPositions.Length);
 
         randomPosition = dropPositions[randomNumber].transform.position;
+
+        alert.transform.position = new Vector3(randomPosition.x, alert.transform.position.y, alert.transform.position.z);
+        activeAlert = true;
+        alert.SetActive(true);
     }
     [ContextMenu("MoveSpider")]
     void MoveSpiderToRandomPosition()
@@ -46,7 +58,6 @@ public class Spider : MonoBehaviour
     void VerticalMovement()
     {
         bodyTransform.Translate(-transform.up * currentSpeed * Time.deltaTime);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,6 +87,8 @@ public class Spider : MonoBehaviour
     {
         currentSpeed = 0;
         yield return new WaitForSeconds(timeToMove);
+        if (activeAlert) alert.SetActive(false);
+        activeAlert = false;
         canBeDamaged = false;
         if (canDrop) MoveSpiderToRandomPosition();
         currentSpeed = speed;
@@ -84,5 +97,10 @@ public class Spider : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (canBeDamaged) health -= damage;
+    }
+
+    void DestroyBoss()
+    {
+        Destroy(gameObject);
     }
 }
