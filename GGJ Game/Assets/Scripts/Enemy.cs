@@ -58,7 +58,6 @@ public class Enemy : MonoBehaviour
     {
         if (attackTimer >= attackCooldown && collision.gameObject.CompareTag("Player"))
         {
-            speed = 0;
             Debug.Log("Jugador dañado");
             attackTimer = 0;
             collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
