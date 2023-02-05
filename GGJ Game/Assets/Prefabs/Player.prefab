@@ -231,12 +231,15 @@ MonoBehaviour:
   isFacingRight: 0
   facingDirection: {x: 0, y: 0}
   wallBoxSize: {x: 0.22, y: 1.6, z: 1}
-  wallMaxDistance: 0.5
+  wallMaxDistance: 0.65
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  canShoot: 0
+  canShoot: 1
   canClimb: 0
+  shootSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  playerDamagedSound: {fileID: 0}
 --- !u!114 &3717635160224219292
 MonoBehaviour:
   m_ObjectHideFlags: 0

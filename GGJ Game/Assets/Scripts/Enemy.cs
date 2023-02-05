@@ -14,7 +14,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackCooldown;
     [SerializeField] float attackTimer;
     [SerializeField] bool isChasing;
+    [SerializeField] bool isAttacking;
     [SerializeField] Vector3 movDirection;
+
+    [SerializeField] AudioSource hitSound;
+    [SerializeField] AudioSource deathSound;
 
     private void Start()
     {
@@ -29,11 +33,16 @@ public class Enemy : MonoBehaviour
         HorizontalMovement();
         ChangeDirection();
 
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0)
+        {
+            deathSound.Play();
+            Destroy(gameObject);
+        }
     }
 
     void HorizontalMovement()
     {
+        if (isAttacking) return;
         if (!isChasing)
         {
         transform.Translate(movDirection * speed * Time.deltaTime);
@@ -42,6 +51,8 @@ public class Enemy : MonoBehaviour
 
     void ChangeDirection()
     {
+        if (isAttacking) return;
+
         if ((enemyCollider.bounds.max.x > movementArea.bounds.max.x || enemyCollider.bounds.min.x < movementArea.bounds.min.x) && !isChasing) 
         {
             movDirection = (movementArea.transform.position - transform.position).normalized;
@@ -56,6 +67,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        hitSound.Play();
         health -= damage;
     }
 
@@ -63,6 +75,7 @@ public class Enemy : MonoBehaviour
     {
         if (attackTimer >= attackCooldown && collision.gameObject.CompareTag("Player"))
         {
+            StartCoroutine(StopOnAttack());
             Debug.Log("Jugador dañado");
             attackTimer = 0;
             collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
@@ -76,6 +89,7 @@ public class Enemy : MonoBehaviour
             Vector3 playerDir = collision.gameObject.transform.position - transform.position;
             Debug.Log($"{gameObject.name} is chasing Player");
             isChasing = true;
+            if (isAttacking) return;
             transform.Translate(new Vector3((playerDir.x),0,0).normalized * speed * Time.deltaTime);
         }
     }
@@ -86,5 +100,12 @@ public class Enemy : MonoBehaviour
         {
             isChasing = false;
         }
+    }
+
+    IEnumerator StopOnAttack()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(attackCooldown);
+        isAttacking = false;
     }
 }
