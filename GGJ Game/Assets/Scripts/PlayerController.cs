@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool canShoot;
     [SerializeField] bool canClimb;
+
+    [Header("SFX")]
+
+    [SerializeField] AudioSource shootSound;
+    [SerializeField] AudioSource jumpSound;
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -100,6 +105,7 @@ public class PlayerController : MonoBehaviour
         if (canJump) Debug.Log("Puede saltar");
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
+            jumpSound.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpForceY);
         }
     }
@@ -147,6 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && stats.health > stats.sapToShoot && canShoot)
         {
+            shootSound.Play();
             stats.ReduceSap(stats.sapToShoot);
             Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, transform.rotation);
         }

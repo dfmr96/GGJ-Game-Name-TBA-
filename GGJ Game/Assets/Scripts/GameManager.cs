@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject lastCheckpoint;
     public static GameManager sharedInstance;
+    [SerializeField] AudioSource checkpointSound;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     public void SetLastCheckpoint (GameObject checkpoint)
     {
+        checkpointSound.Play();
         lastCheckpoint = checkpoint;
     }
 }

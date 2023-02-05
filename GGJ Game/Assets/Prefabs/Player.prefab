@@ -82,7 +82,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 7382e0256c780014e9c3d1b30a2f56ea, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -104,10 +104,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3831301047811052083, guid: b7a4db56794b12b42b6ac3439d5ff83f, type: 3}
   rb: {fileID: 0}
   stats: {fileID: 0}
-  speed: 500
-  slidingSpeed: 1000
+  speed: 600
+  slidingSpeed: 450
   jumpForceX: 30
-  jumpForceY: 10
+  jumpForceY: 29
   moveX: 0
   moveY: 0
   velocity: {x: 0, y: 0}
@@ -125,6 +125,9 @@ MonoBehaviour:
     m_Bits: 128
   canShoot: 1
   canClimb: 0
+  shootSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  playerDamagedSound: {fileID: 0}
 --- !u!114 &3717635160224219292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,10 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da0aff95fa51c14e8f6172893cbf393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 64
   minHealth: 0
-  _health: 10
-  sapToShoot: 0
+  _health: 64
+  sapToShoot: 2
 --- !u!1 &9208298621033528289
 GameObject:
   m_ObjectHideFlags: 0
