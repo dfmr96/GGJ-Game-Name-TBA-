@@ -22,6 +22,8 @@ public class Spider : MonoBehaviour
     [SerializeField] Collider2D stopZone;
     [SerializeField] int damage;
 
+    [SerializeField] GameObject doorToOpen;
+
     private void Start()
     {
         canDrop = false;
@@ -35,7 +37,7 @@ public class Spider : MonoBehaviour
 
         if (health <= 0)
         {
-            ///
+            gameObject.SetActive(false);
         }
     }
     void GetRandomPosition()
@@ -102,5 +104,11 @@ public class Spider : MonoBehaviour
     void DestroyBoss()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        doorToOpen.GetComponent<Door>().OpenDoor();
+        alert.SetActive(false);
     }
 }

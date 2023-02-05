@@ -42,7 +42,12 @@ public class Enemy : MonoBehaviour
 
     void ChangeDirection()
     {
-        if((enemyCollider.bounds.max.x >= movementArea.bounds.max.x || enemyCollider.bounds.min.x <= movementArea.bounds.min.x) && changeDirectionTimer >= changeDirectionCooldown && !isChasing)
+        if ((enemyCollider.bounds.max.x > movementArea.bounds.max.x || enemyCollider.bounds.min.x < movementArea.bounds.min.x) && !isChasing) 
+        {
+            movDirection = (movementArea.transform.position - transform.position).normalized;
+        }
+
+        if ((enemyCollider.bounds.max.x >= movementArea.bounds.max.x || enemyCollider.bounds.min.x <= movementArea.bounds.min.x) && changeDirectionTimer >= changeDirectionCooldown && !isChasing)
         {
             changeDirectionTimer = 0;
             movDirection = -movDirection;
