@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2337185500979994177, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337185500979994177, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
+      propertyPath: damage
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337185500979994177, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
+      propertyPath: health
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337185500979994177, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
+      propertyPath: attackCooldown
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3152257054722300384, guid: 6fc203004be8fe549b049be2fdcb58e6, type: 3}
       propertyPath: m_Size.x
       value: 15
