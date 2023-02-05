@@ -119,10 +119,12 @@ MonoBehaviour:
   isFacingRight: 0
   facingDirection: {x: 0, y: 0}
   wallBoxSize: {x: 0.22, y: 1.6, z: 1}
-  wallMaxDistance: 0.5
+  wallMaxDistance: 0.65
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  canShoot: 1
+  canClimb: 0
 --- !u!114 &3717635160224219292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,9 +140,7 @@ MonoBehaviour:
   maxHealth: 10
   minHealth: 0
   _health: 10
-  maxSap: 5
-  minSap: 0
-  _sap: 5
+  sapToShoot: 0
 --- !u!1 &9208298621033528289
 GameObject:
   m_ObjectHideFlags: 0
