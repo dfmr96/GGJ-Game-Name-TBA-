@@ -522,7 +522,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3653458762428492507}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -560,13 +560,14 @@ MonoBehaviour:
   bodyTransform: {fileID: 3653458762428492509}
   canDrop: 0
   canBeDamaged: 0
-  speed: 15
+  speed: 25
   currentSpeed: 0
   timeToGoUp: 0.25
   timeToGoDown: 2
-  stunTime: 1.2
+  stunTime: 1.4
   stopZone: {fileID: 3653458762219995547}
-  damage: 15
+  damage: 16
+  doorToOpen: {fileID: 0}
 --- !u!61 &3653458762428492513
 BoxCollider2D:
   m_ObjectHideFlags: 0
