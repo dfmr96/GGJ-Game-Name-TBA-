@@ -123,6 +123,8 @@ MonoBehaviour:
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  canShoot: 0
+  canClimb: 0
 --- !u!114 &3717635160224219292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,9 +140,7 @@ MonoBehaviour:
   maxHealth: 10
   minHealth: 0
   _health: 10
-  maxSap: 5
-  minSap: 0
-  _sap: 5
+  sapToShoot: 0
 --- !u!1 &9208298621033528289
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
