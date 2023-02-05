@@ -5765,6 +5765,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9208298620006940783, guid: 43f0d36a7ab46834c8c1ca43abd99c9d, type: 3}
+      propertyPath: canShoot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208298620006940783, guid: 43f0d36a7ab46834c8c1ca43abd99c9d, type: 3}
       propertyPath: wallMaxDistance
       value: 0.65
       objectReference: {fileID: 0}

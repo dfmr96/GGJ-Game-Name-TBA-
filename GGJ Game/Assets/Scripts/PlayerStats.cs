@@ -13,9 +13,11 @@ public class PlayerStats : MonoBehaviour
         private set { _health = value;} 
     }
 
-    public void ReduceSap()
+    public int sapToShoot;
+
+    public void ReduceSap(int amount)
     {
-        health--;
+        health -= amount;
     }
 
     public void TakeDamage(int damage)

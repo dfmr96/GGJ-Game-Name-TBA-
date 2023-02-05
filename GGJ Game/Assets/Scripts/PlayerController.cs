@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && stats.health > 0 && canShoot)
         {
-            stats.ReduceSap();
+            stats.ReduceSap(stats.sapToShoot);
             Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, transform.rotation);
         }
     }
