@@ -125,16 +125,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7357d54ed13e3142adc51c5ecf5a57c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  damage: 0
-  speed: 5
+  health: 6
+  damage: 16
+  speed: 6
   movementArea: {fileID: 3152257054991659790}
   enemyCollider: {fileID: 3152257054722300385}
   changeDirectionCooldown: 1
   changeDirectionTimer: 0
-  attackCooldown: 0
+  attackCooldown: 1
   attackTimer: 0
   isChasing: 0
+  isAttacking: 0
   movDirection: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
