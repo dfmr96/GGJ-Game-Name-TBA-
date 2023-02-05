@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorToOpen: {fileID: 0}
-  haveToOpen: 1
 --- !u!61 &6641574659248081309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,7 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorToOpen: {fileID: 0}
-  haveToOpen: 0
 --- !u!61 &6641574659561628999
 BoxCollider2D:
   m_ObjectHideFlags: 0
