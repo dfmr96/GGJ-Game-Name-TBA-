@@ -20,7 +20,7 @@ public class SpiderTrigger : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             ActiveSpider();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
