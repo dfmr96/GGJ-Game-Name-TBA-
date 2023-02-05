@@ -6,9 +6,11 @@ public class SpiderTrigger : MonoBehaviour
 {
     [SerializeField] GameObject[] spiderChildren;
     [SerializeField] SpiderObjectsController objectsController;
+    [SerializeField] AudioSource spiderSound;
 
     public void ActiveSpider()
     {
+        spiderSound.Play();
         for (int i = 0; i < spiderChildren.Length; i++)
         {
             spiderChildren[i].SetActive(true);

@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     public int sapToShoot;
+    [SerializeField] AudioSource damageSound;
 
     public void ReduceSap(int amount)
     {
@@ -22,6 +23,7 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        damageSound.Play();
         health -= damage;
 
         if(health <=0)

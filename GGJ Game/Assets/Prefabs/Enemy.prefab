@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 500239940}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +136,8 @@ MonoBehaviour:
   attackTimer: 0
   isChasing: 0
   movDirection: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!58 &500239940
 CircleCollider2D:
   m_ObjectHideFlags: 0

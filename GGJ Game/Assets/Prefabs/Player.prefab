@@ -125,6 +125,9 @@ MonoBehaviour:
     m_Bits: 128
   canShoot: 1
   canClimb: 0
+  shootSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  playerDamagedSound: {fileID: 0}
 --- !u!114 &3717635160224219292
 MonoBehaviour:
   m_ObjectHideFlags: 0
