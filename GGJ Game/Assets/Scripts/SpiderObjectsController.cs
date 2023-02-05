@@ -12,7 +12,10 @@ public class SpiderObjectsController : MonoBehaviour
     {
         for (int i = 0; i < doorsLever.Length; i++)
         {
-            doorsLever[i].SetActive(false);
+            if (doorsLever[i] != null)
+            {
+                doorsLever[i].SetActive(false);
+            }
         }
     }
 }
