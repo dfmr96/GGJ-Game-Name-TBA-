@@ -357,7 +357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3366596155417421812}
-  sapBar: {fileID: 0}
   playerStats: {fileID: 0}
 --- !u!1 &3366596155883018834
 GameObject:
