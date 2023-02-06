@@ -103,6 +103,7 @@ public class Spider : MonoBehaviour
 
     private void OnDisable()
     {
+        AudioManager.sharedInstance.PlayBGM(AudioManager.sharedInstance.bmgs[0]);
         for (int i = 0; i < doorsToOpen.Length; i++)
         {
             doorsToOpen[i].GetComponent<Door>().OpenDoor();

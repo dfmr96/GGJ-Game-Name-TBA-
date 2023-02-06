@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager sharedInstance;
     [SerializeField] AudioSource checkpointSound;
     [SerializeField] GameObject creditsPanel;
-
+    public Fades fader;
     private void Awake()
     {
         if (sharedInstance == null)

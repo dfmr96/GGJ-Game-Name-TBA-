@@ -20,8 +20,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioSource hitSound;
     [SerializeField] AudioSource deathSound;
 
+    [SerializeField] SpriteRenderer sprite;
     private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         attackTimer = 0;
         changeDirectionTimer = 0;
         movDirection = transform.right;
@@ -32,6 +34,14 @@ public class Enemy : MonoBehaviour
         changeDirectionTimer += Time.deltaTime;
         HorizontalMovement();
         ChangeDirection();
+
+        if (movDirection.x < 0)
+        {
+            sprite.flipX = false;
+        } else
+        {
+            sprite.flipX = true;
+        }
 
         if (health <= 0)
         {
