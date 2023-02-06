@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 3653458762467891255}
   - {fileID: 3653458762219995546}
   objectsController: {fileID: 1599660462}
+  spiderSound: {fileID: 0}
 --- !u!1 &1315941253079917505
 GameObject:
   m_ObjectHideFlags: 0
