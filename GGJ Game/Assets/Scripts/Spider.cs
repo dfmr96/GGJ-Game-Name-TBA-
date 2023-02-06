@@ -22,7 +22,7 @@ public class Spider : MonoBehaviour
     [SerializeField] Collider2D stopZone;
     [SerializeField] int damage;
 
-    [SerializeField] GameObject doorToOpen;
+    [SerializeField] GameObject[] doorsToOpen;
 
     private void Start()
     {
@@ -103,7 +103,10 @@ public class Spider : MonoBehaviour
 
     private void OnDisable()
     {
-        doorToOpen.GetComponent<Door>().OpenDoor();
+        for (int i = 0; i < doorsToOpen.Length; i++)
+        {
+            doorsToOpen[i].GetComponent<Door>().OpenDoor();
+        }
         alert.SetActive(false);
     }
 }
