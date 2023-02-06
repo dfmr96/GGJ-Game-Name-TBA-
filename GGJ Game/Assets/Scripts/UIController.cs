@@ -6,7 +6,6 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] Slider healthBar;
-    [SerializeField] Slider sapBar;
     [SerializeField] PlayerStats playerStats;
 
     private void Start()
