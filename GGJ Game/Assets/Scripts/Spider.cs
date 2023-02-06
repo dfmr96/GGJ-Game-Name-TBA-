@@ -101,11 +101,6 @@ public class Spider : MonoBehaviour
         if (canBeDamaged) health -= damage;
     }
 
-    void DestroyBoss()
-    {
-        Destroy(gameObject);
-    }
-
     private void OnDisable()
     {
         doorToOpen.GetComponent<Door>().OpenDoor();
