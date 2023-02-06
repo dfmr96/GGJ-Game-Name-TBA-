@@ -176,8 +176,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358675722956272683}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -9.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -189,8 +189,8 @@ Transform:
   - {fileID: 589780176501129640}
   - {fileID: 1256487706749231482}
   - {fileID: 4688809127116985220}
-  m_Father: {fileID: 3653458762807325165}
-  m_RootOrder: 9
+  m_Father: {fileID: 3653458762428492509}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529770864798255735
 GameObject:
@@ -609,7 +609,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 9.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2405900781477275520}
   m_Father: {fileID: 3653458762807325165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -718,7 +719,7 @@ MonoBehaviour:
   stunTime: 1.4
   stopZone: {fileID: 3653458762219995547}
   damage: 16
-  doorToOpen: {fileID: 0}
+  doorsToOpen: []
 --- !u!61 &3653458762428492513
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -830,7 +831,6 @@ Transform:
   - {fileID: 3653458761744766902}
   - {fileID: 3653458762219995549}
   - {fileID: 1689236200}
-  - {fileID: 2405900781477275520}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
