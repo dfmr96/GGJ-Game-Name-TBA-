@@ -7,9 +7,10 @@ public class SpiderTrigger : MonoBehaviour
     [SerializeField] GameObject[] spiderChildren;
     [SerializeField] SpiderObjectsController objectsController;
     [SerializeField] AudioSource spiderSound;
-
+    [SerializeField] AudioClip spiderBGM;
     public void ActiveSpider()
     {
+        AudioManager.sharedInstance.PlayBGM(spiderBGM);
         spiderSound.Play();
         for (int i = 0; i < spiderChildren.Length; i++)
         {

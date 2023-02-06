@@ -22,7 +22,7 @@ public class Spider : MonoBehaviour
     [SerializeField] Collider2D stopZone;
     [SerializeField] int damage;
 
-    [SerializeField] GameObject doorToOpen;
+    [SerializeField] GameObject[] doorsToOpen;
 
     private void Start()
     {
@@ -101,14 +101,13 @@ public class Spider : MonoBehaviour
         if (canBeDamaged) health -= damage;
     }
 
-    void DestroyBoss()
-    {
-        Destroy(gameObject);
-    }
-
     private void OnDisable()
     {
-        doorToOpen.GetComponent<Door>().OpenDoor();
+        AudioManager.sharedInstance.PlayBGM(AudioManager.sharedInstance.bmgs[0]);
+        for (int i = 0; i < doorsToOpen.Length; i++)
+        {
+            doorsToOpen[i].GetComponent<Door>().OpenDoor();
+        }
         alert.SetActive(false);
     }
 }
